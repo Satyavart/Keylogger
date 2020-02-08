@@ -1,4 +1,5 @@
 # Keylogger
+	Keylogger starts as the system turns on
  	Send Mail to specific address
 	Mail will be send in every 10 min cycle
 	Each cycle contain 
