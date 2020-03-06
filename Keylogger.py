@@ -24,6 +24,7 @@ import sys
 import cv2
 import os
 
+
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 RATE = 44100
