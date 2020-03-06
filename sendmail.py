@@ -12,7 +12,7 @@ import time
 def sendmail():
     time.sleep(1200)
     email = "testarena46@gmail.com"
-    password = "Password@123"
+    password = "Password"
     msg = MIMEMultipart()
     msg['From'] = email
     msg['To'] = email
