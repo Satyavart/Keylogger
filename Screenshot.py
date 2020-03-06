@@ -5,6 +5,7 @@ import time
 import os
 from path import Path
 import datetime
+from CameraCapture import capture_photo
 
 
 def start(name):
@@ -14,6 +15,7 @@ def start(name):
     os.chdir(loc_ss)
     myscreenshot = pyautogui.screenshot()
     myscreenshot.save(name)
+    capture_photo()
 
 
 def capture_ss():
@@ -22,7 +24,7 @@ def capture_ss():
         current_time = currdt.strftime("%H:%M:%S").replace(":", "-")
         filename = 'abc_' + current_time + '.png'
         start(filename)
-        time.sleep(5)
+        time.sleep(15)
         capture_ss()
     except NotImplementedError:
         subprocess.call("sudo apt-get install scrot", shell=True)

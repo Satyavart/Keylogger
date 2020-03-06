@@ -14,7 +14,7 @@ THRESHOLD = 500
 CHUNK_SIZE = 1024
 FORMAT = pyaudio.paInt16
 RATE = 44100
-sec = 30
+sec = 120
 
 def is_silent(snd_data):
     "Returns 'True' if below the 'silent' threshold"
@@ -116,7 +116,7 @@ def recording():
         current_time = currde.strftime("%H:%M:%S").replace(":", "-")
         filename = "audio_" + current_time + ".wav"
         start(filename)
-        time.sleep(5)
+        time.sleep(360)
         recording()
     except KeyboardInterrupt:
         print()

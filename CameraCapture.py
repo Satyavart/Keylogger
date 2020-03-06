@@ -16,6 +16,7 @@ def start(name):
     return_value, image = camera.read()
     cv2.imwrite(name, image)
     del(camera)
+    time.sleep(120)
 
 
 def capture_photo():
@@ -24,8 +25,6 @@ def capture_photo():
         current_time = currdt.strftime("%H:%M:%S").replace(":", "-")
         filename = 'xyz_' + current_time + '.png'
         start(filename)
-        time.sleep(5)
-        capture_photo()
     except KeyboardInterrupt:
         exit()
 
