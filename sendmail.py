@@ -9,10 +9,8 @@ import os
 import time
 
 
-
-
 def sendmail():
-    time.sleep(12)
+    time.sleep(1200)
     email = "testarena46@gmail.com"
     password = "Password@123"
     msg = MIMEMultipart()
